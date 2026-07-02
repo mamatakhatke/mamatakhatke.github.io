@@ -25,23 +25,30 @@
     </header>
 
 <!-- Hero Section (Updated with Right-Side Photo Placement) -->
-   <section id="hero" class="hero-section">
-    <div class="hero-container">
-        
-        <!-- Left Side Text Block -->
-        <div class="hero-content">
-            ...
-        </div>
-        
-        <!-- Right Side Image Block -->
-        <div class="hero-image">
-            <div class="profile-img-wrapper">
-                <img src="profile.jpg" alt="Mamata Khatke Profile">
+<!-- Hardcoded Layout Grid to Force the Photo to the Right Side -->
+    <section id="hero" style="min-height: 100vh; display: flex; align-items: center; max-width: 1100px; margin: 0 auto; padding: 100px 20px 20px 20px;">
+        <div style="display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 60px; align-items: center; width: 100%;">
+            
+            <!-- Left Side Text Block -->
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: monospace; color: #9ca3af; margin-bottom: 15px;">// hello world</p>
+                <h1 style="font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px;">I design & build software solutions that bridge hardware and the web.</h1>
+                <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 40px;">Hello, I'm Mamata, an Electronics and Communication Engineer & Java Full Stack Developer passionate about building robust applications and smart technologies[cite: 1].</p>
+                <div>
+                    <a href="#projects" class="btn-primary" style="text-decoration: none; padding: 12px 30px; border-radius: 4px; font-weight: 500; display: inline-block; margin-right: 15px;">See Projects</a>
+                    <a href="mailto:mamatakhatke2@gmail.com" class="btn-secondary" style="text-decoration: none; padding: 12px 30px; border-radius: 4px; font-weight: 500; display: inline-block; margin-right: 15px;">Contact Me[cite: 1]</a>
+                </div>
             </div>
-        </div>
+            
+            <!-- Right Side Image Block -->
+            <div style="display: flex; justify-content: flex-end; width: 100%;">
+                <div style="position: relative; width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 3px solid #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); flex-shrink: 0;">
+                    <img src="profile.jpg" alt="Mamata Khatke Profile" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
 
-    </div>
-</section>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="container">
