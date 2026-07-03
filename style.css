@@ -451,17 +451,29 @@ nav a, .btn-primary, .tag, .project-card, .skill-category {
     }
 }
 
-/* Cranked up, high-intensity blue glow to match your project hover states */
+/* Base style for your skill/stack buttons */
+.tech-stack-btn {
+    background-color: #1e293b; /* Dark slate background */
+    color: #f8fafc;
+    border: 2px solid #38bdf8; /* Light blue border */
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    /* This makes the glow fade in smoothly instead of snapping instantly */
+    transition: all 0.3s ease-in-out; 
+}
+
+/* The Glow Effect on Mouse Hover */
 .tech-stack-btn:hover {
     color: #ffffff;
-    background-color: rgba(0, 149, 255, 0.15); /* Slightly darker blue tint inside */
-    border-color: #0095ff; /* Crisp, rich blue border line */
+    border-color: #38bdf8;
+    background-color: rgba(56, 189, 248, 0.1); /* Subtle blue tint inside */
     
-    /* Dual-layered strong blue glow:
-       Layer 1: Sharp, intense inner neon aura (15px wide, 80% solid blue)
-       Layer 2: Wide, bleeding background glow (35px wide, 45% solid blue) */
-    box-shadow: 0 0 15px rgba(0, 149, 255, 0.8), 
-                0 0 35px rgba(0, 149, 255, 0.45);
+    /* The active glow: x-offset, y-offset, blur-radius, color */
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6), 
+                0 0 30px rgba(56, 189, 248, 0.3);
     
-    transform: translateY(-3px); /* Match standard card lift */
+    /* Slight lift effect when mouse hovers over it */
+    transform: translateY(-2px); 
 }
