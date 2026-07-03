@@ -20,6 +20,7 @@ body {
     color: var(--text-main);
     font-family: var(--font-family);
     line-height: 1.6;
+    overflow-x: hidden; /* Prevents awkward horizontal layout scrolling */
 }
 
 header {
@@ -320,38 +321,132 @@ nav a, .btn-primary, .tag, .project-card, .skill-category {
     box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
 }
 
-/* --- General Responsive Media Rules --- */
+/* --- Comprehensive Mobile & Tablet Responsiveness Overhaul --- */
+@media(max-width: 900px) {
+    .container {
+        padding: 60px 20px; /* Reduces huge top/bottom blank space gaps on mobile */
+    }
+    
+    .dark-bg {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Converts About section from 2-columns to a clean stacked layout */
+    .about-grid { 
+        grid-template-columns: 1fr; 
+        gap: 35px; 
+    }
+}
+
 @media(max-width: 768px) {
-    .nav-container { flex-direction: column; gap: 15px; }
-    nav a { margin: 0 10px; }
+    /* Header/Navigation mobile optimization */
+    .nav-container { 
+        flex-direction: column; 
+        gap: 12px; 
+        padding: 15px 10px;
+    }
+    nav a { 
+        margin: 0 10px; 
+        font-size: 0.9rem;
+    }
+    
+    /* Hero Screen adjustments */
+    #hero {
+        padding: 120px 16px 40px 16px !important;
+    }
+    
     .hero-grid-container { 
         grid-template-columns: 1fr !important; 
         text-align: center;
         display: flex !important;
-        flex-direction: column-reverse;
+        flex-direction: column-reverse; /* Keeps profile picture elegantly at the top on phone view */
         gap: 30px;
     }
-    .hero-image-box { justify-content: center !important; }
-    .hero-section h1 { font-size: 2.2rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 30px; }
-    .project-card { flex-direction: column; gap: 10px; }
     
-    /* Responsive Journey Timeline Styling Cards */
-    .timeline { gap: 30px; padding-left: 5px; }
+    .hero-image-box { 
+        justify-content: center !important; 
+    }
+    
+    #hero h1 { 
+        font-size: 2rem !important; /* Lowers hero font size so words don't snap awkwardly */
+    }
+    
+    /* Center aligns the primary call-to-action button under text on mobile */
+    .btn-primary {
+        margin-right: 0;
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    /* Project Cards stacked design */
+    .project-card { 
+        flex-direction: column; 
+        gap: 15px; 
+        padding: 20px;
+    }
+    
+    .project-num {
+        font-size: 1.8rem;
+    }
+    
+    /* Journey Timeline mobile optimization cards */
+    .timeline { 
+        gap: 25px; 
+        padding-left: 0; 
+    }
+    
     .timeline-item {
         background: rgba(255, 255, 255, 0.02);
         padding: 20px;
         border-radius: 8px;
-        border-left: 2px solid var(--accent-color);
+        border-left: 3px solid var(--accent-color);
     }
+    
     .timeline-item h3 { font-size: 1.15rem; line-height: 1.3; }
-    .timeline-item h4 { font-size: 0.95rem; margin-top: 5px; }
-    .timeline-date { font-size: 0.8rem; margin-bottom: 10px; }
-    .timeline-item ul { margin-left: 15px; font-size: 0.9rem; }
-    .timeline-item li { margin-bottom: 10px; }
+    .timeline-item h4 { font-size: 1rem; margin-top: 8px; }
+    .timeline-date { font-size: 0.8rem; margin-bottom: 12px; }
+    .timeline-item ul { margin-left: 18px; font-size: 0.95rem; }
+    .timeline-item li { margin-bottom: 12px; }
+
+    /* Contact Footer links stacking */
+    .contact-box {
+        padding: 40px 20px;
+    }
+    
+    .contact-box h2 {
+        font-size: 2rem;
+    }
+    
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .social-links a {
+        margin: 0;
+        font-size: 1rem;
+    }
 }
 
+/* Fixes extreme tiny screen viewports (iPhone SE / Older Devices) */
 @media (max-width: 480px) {
-    .floating-contact-bar { bottom: 20px; left: 20px; gap: 10px; }
-    .float-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+    .floating-contact-bar { 
+        bottom: 15px; 
+        left: 15px; 
+        gap: 10px; 
+    }
+    
+    .float-icon { 
+        width: 46px; 
+        height: 46px; 
+        font-size: 1.15rem; 
+    }
+    
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
 }
