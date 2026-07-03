@@ -238,3 +238,83 @@ footer { text-align: center; padding: 30px; font-size: 0.85rem; color: var(--tex
     .about-grid { grid-template-columns: 1fr; gap: 30px; }
     .project-card { flex-direction: column; gap: 10px; }
 }
+
+/* --- Stunning UI Enhancements & Smooth Transitions --- */
+
+/* Smooth fade-in transitions for all interactive elements */
+nav a, .btn-primary, .btn-secondary, .tag, .project-card, .skill-category {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Smooth Navigation underlines on hover */
+nav a {
+    position: relative;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Micro-interactions for Project Cards */
+.animate-card {
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+.animate-card:hover {
+    transform: translateY(-6px); /* Subtle physics lift */
+    background: #172237; /* Shifts background color slightly lighter */
+    border-color: rgba(56, 189, 248, 0.3); /* Adds subtle blue outline border */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+/* Hover effects for Skill blocks */
+.skill-category:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Brand New Interactive Project GitHub Buttons */
+.project-links {
+    margin-top: 20px;
+}
+
+.btn-project-git {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: monospace;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-project-git:hover {
+    background: var(--accent-glow);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateX(3px); /* Subtle nudge movement forward */
+}
+
+/* Smooth hover for social link icons in footer */
+.social-links a {
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+.social-links a:hover {
+    transform: translateY(-3px);
+}
