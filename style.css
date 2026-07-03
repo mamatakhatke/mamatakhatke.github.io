@@ -450,3 +450,18 @@ nav a, .btn-primary, .tag, .project-card, .skill-category {
         font-size: 1.6rem;
     }
 }
+
+/* Cranked up, high-intensity blue glow to match your project hover states */
+.tech-stack-btn:hover {
+    color: #ffffff;
+    background-color: rgba(0, 149, 255, 0.15); /* Slightly darker blue tint inside */
+    border-color: #0095ff; /* Crisp, rich blue border line */
+    
+    /* Dual-layered strong blue glow:
+       Layer 1: Sharp, intense inner neon aura (15px wide, 80% solid blue)
+       Layer 2: Wide, bleeding background glow (35px wide, 45% solid blue) */
+    box-shadow: 0 0 15px rgba(0, 149, 255, 0.8), 
+                0 0 35px rgba(0, 149, 255, 0.45);
+    
+    transform: translateY(-3px); /* Match standard card lift */
+}
