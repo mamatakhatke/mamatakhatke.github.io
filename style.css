@@ -52,10 +52,23 @@ nav a {
     text-decoration: none;
     margin-left: 25px;
     font-size: 0.95rem;
-    transition: color 0.3s;
+    position: relative;
 }
 
-nav a:hover { color: var(--accent-color); }
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
 
 nav .btn-contact {
     border: 1px solid var(--accent-color);
@@ -101,23 +114,7 @@ nav .btn-contact:hover { background: var(--accent-glow); }
     font-weight: 500;
     display: inline-block;
     margin-right: 15px;
-    transition: transform 0.2s;
 }
-
-.btn-primary:hover { transform: translateY(-2px); }
-
-.btn-secondary {
-    border: 1px solid var(--text-muted);
-    color: var(--text-main);
-    text-decoration: none;
-    padding: 12px 30px;
-    border-radius: 4px;
-    font-weight: 500;
-    display: inline-block;
-    transition: border-color 0.2s;
-}
-
-.btn-secondary:hover { border-color: var(--accent-color); }
 
 .about-grid {
     display: grid;
@@ -216,77 +213,34 @@ nav .btn-contact:hover { background: var(--accent-glow); }
 .contact-box { background: var(--card-bg); padding: 60px 40px; border-radius: 12px; max-width: 800px; margin: 0 auto; }
 .contact-box h2 { font-size: 2.5rem; margin-bottom: 15px; }
 .contact-box p { color: var(--text-muted); margin-bottom: 30px; }
-.contact-email { font-size: 1.8rem; font-weight: 700; color: var(--accent-color); text-decoration: none; display: block; margin-bottom: 30px; word-break: break-all; }
-.social-links a { color: var(--text-main); text-decoration: none; margin: 0 15px; font-size: 1.1rem; }
-.social-links a:hover { color: var(--accent-color); }
 .location-text { margin-top: 35px !important; font-size: 0.9rem; font-family: monospace; color: var(--text-muted); }
 
 footer { text-align: center; padding: 30px; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255, 255, 255, 0.05); }
 
-@media(max-width: 768px) {
-    .nav-container { flex-direction: column; gap: 15px; }
-    nav a { margin: 0 10px; }
-    .hero-grid-container { 
-        grid-template-columns: 1fr !important; 
-        text-align: center;
-        display: flex !important;
-        flex-direction: column-reverse;
-        gap: 30px;
-    }
-    .hero-image-box { justify-content: center !important; }
-    .hero-section h1 { font-size: 2.2rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 30px; }
-    .project-card { flex-direction: column; gap: 10px; }
-}
-
-/* --- Stunning UI Enhancements & Smooth Transitions --- */
-
-/* Smooth fade-in transitions for all interactive elements */
-nav a, .btn-primary, .btn-secondary, .tag, .project-card, .skill-category {
+/* --- UI Enhancements & Animations --- */
+nav a, .btn-primary, .tag, .project-card, .skill-category {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Smooth Navigation underlines on hover */
-nav a {
-    position: relative;
-}
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
-}
-nav a:hover::after {
-    width: 100%;
-}
+.btn-primary:hover { transform: translateY(-2px); }
 
-/* Micro-interactions for Project Cards */
 .animate-card {
     border: 1px solid rgba(255, 255, 255, 0.03);
-    position: relative;
 }
 
 .animate-card:hover {
-    transform: translateY(-6px); /* Subtle physics lift */
-    background: #172237; /* Shifts background color slightly lighter */
-    border-color: rgba(56, 189, 248, 0.3); /* Adds subtle blue outline border */
+    transform: translateY(-6px);
+    background: #172237;
+    border-color: rgba(56, 189, 248, 0.3);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56, 189, 248, 0.1);
 }
 
-/* Hover effects for Skill blocks */
 .skill-category:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Brand New Interactive Project GitHub Buttons */
-.project-links {
-    margin-top: 20px;
-}
+.project-links { margin-top: 20px; }
 
 .btn-project-git {
     display: inline-flex;
@@ -307,19 +261,24 @@ nav a:hover::after {
     background: var(--accent-glow);
     color: var(--accent-color);
     border-color: var(--accent-color);
-    transform: translateX(3px); /* Subtle nudge movement forward */
+    transform: translateX(3px);
 }
 
-/* Smooth hover for social link icons in footer */
 .social-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
     transition: color 0.2s ease, transform 0.2s ease;
     display: inline-block;
 }
+
 .social-links a:hover {
+    color: var(--accent-color);
     transform: translateY(-3px);
 }
 
-/* --- Floating Contact Icons (Bottom Left) --- */
+/* --- Floating Action Side Bar --- */
 .floating-contact-bar {
     position: fixed;
     bottom: 30px;
@@ -327,7 +286,7 @@ nav a:hover::after {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    z-index: 2000; /* Keeps them floating flawlessly on top of all text sections */
+    z-index: 2000;
 }
 
 .float-icon {
@@ -342,37 +301,57 @@ nav a:hover::after {
     text-decoration: none;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    background: #131a26; /* Dark slate background matching your card layers */
+    background: #131a26;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Elegant Theme-Matching Hover Transformations */
 .whatsapp-btn:hover {
-    background: #25D366; /* Changes to official WhatsApp green on hover */
+    background: #25D366;
     border-color: #25D366;
     transform: translateY(-5px) scale(1.08);
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
 }
 
 .call-btn:hover {
-    background: var(--accent-color); /* Changes to your portfolio theme's signature cyan blue */
+    background: var(--accent-color);
     border-color: var(--accent-color);
-    color: #000000; /* Dark contrast text optimization */
+    color: #000000;
     transform: translateY(-5px) scale(1.08);
     box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
 }
 
-/* Responsive adjustment so it doesn't crowd small smartphone viewports */
-@media (max-width: 480px) {
-    .floating-contact-bar {
-        bottom: 20px;
-        left: 20px;
-        gap: 10px;
+/* --- General Responsive Media Rules --- */
+@media(max-width: 768px) {
+    .nav-container { flex-direction: column; gap: 15px; }
+    nav a { margin: 0 10px; }
+    .hero-grid-container { 
+        grid-template-columns: 1fr !important; 
+        text-align: center;
+        display: flex !important;
+        flex-direction: column-reverse;
+        gap: 30px;
     }
-    .float-icon {
-        width: 44px;
-        height: 44px;
-        font-size: 1.2rem;
+    .hero-image-box { justify-content: center !important; }
+    .hero-section h1 { font-size: 2.2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .project-card { flex-direction: column; gap: 10px; }
+    
+    /* Responsive Journey Timeline Styling Cards */
+    .timeline { gap: 30px; padding-left: 5px; }
+    .timeline-item {
+        background: rgba(255, 255, 255, 0.02);
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 2px solid var(--accent-color);
     }
+    .timeline-item h3 { font-size: 1.15rem; line-height: 1.3; }
+    .timeline-item h4 { font-size: 0.95rem; margin-top: 5px; }
+    .timeline-date { font-size: 0.8rem; margin-bottom: 10px; }
+    .timeline-item ul { margin-left: 15px; font-size: 0.9rem; }
+    .timeline-item li { margin-bottom: 10px; }
 }
 
+@media (max-width: 480px) {
+    .floating-contact-bar { bottom: 20px; left: 20px; gap: 10px; }
+    .float-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+}
